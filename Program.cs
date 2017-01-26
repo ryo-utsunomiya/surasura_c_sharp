@@ -6,12 +6,13 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            var p1 = new Person();
-            var p2 = new Person("john", 18);
-            var p3 = new Person { Name = "bob", Age = 30 };
-            VarDumper.Dump(p1);
-            VarDumper.Dump(p2);
-            VarDumper.Dump(p3);
+            Func<int, int, int> f = Add;
+            Console.WriteLine(f(1,2));
+        }
+
+        static int Add(int x, int y)
+        {
+            return x + y;
         }
     }
 }
