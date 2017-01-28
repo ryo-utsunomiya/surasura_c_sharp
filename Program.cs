@@ -2,17 +2,25 @@
 
 namespace ConsoleApplication
 {
+    delegate void ShowMessage();
+
     public class Program
     {
         public static void Main(string[] args)
         {
-            Func<int, int, int> f = Add;
-            Console.WriteLine(f(1,2));
+            var p1 = new Person("john");
+            var p2 = new Person("paul");
+
+            var show = new ShowMessage(p1.ShowName);
+            show += new ShowMessage(p2.ShowName);
+            show += new ShowMessage(A);
+            
+            show();
         }
 
-        static int Add(int x, int y)
+        static void A()
         {
-            return x + y;
+            Console.WriteLine("A is called");
         }
     }
 }
