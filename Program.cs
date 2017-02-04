@@ -8,19 +8,20 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            var p1 = new Person("john");
-            var p2 = new Person("paul");
+            const int SIZE = 5;
+            var si = new Stack<int>(SIZE);
+            var sd = new Stack<double>(SIZE);
 
-            var show = new ShowMessage(p1.ShowName);
-            show += new ShowMessage(p2.ShowName);
-            show += new ShowMessage(A);
-            
-            show();
-        }
+            for (int i = 1; i <= SIZE; ++i)
+            {
+                si.Push(i);
+                sd.Push(1.0/i);
+            }
 
-        static void A()
-        {
-            Console.WriteLine("A is called");
+            while (si.Size != 0)
+            {
+                Console.WriteLine("1/{0} = {1}", si.Pop(), sd.Pop());
+            }
         }
     }
 }
